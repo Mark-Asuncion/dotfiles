@@ -1,0 +1,6 @@
+[user]
+	name = Mark-Asuncion
+[alias]
+	logd = log --graph --decorate --oneline
+[init]
+	defaultBranch = main

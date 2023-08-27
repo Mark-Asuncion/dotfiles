@@ -1,0 +1,95 @@
+{
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "window.zoomLevel": 1,
+    "editor.cursorStyle": "block-outline",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "editor.fontSize": 15,
+    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'monospace', monospace",
+    "editor.fontLigatures": true,
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled": false,
+    "editor.cursorSurroundingLines": 10,
+
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": false,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j"],
+            "after": ["g","j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g","k"]
+        },
+        {
+            "before": ["Y"],
+            "after": ["y","$"]
+        },
+        {
+            "before": ["z","c"],
+            "commands": ["editor.fold"]
+        },
+        {
+            "before": ["z","C"],
+            "commands": ["editor.foldRecursively"]
+        },
+        {
+            "before": ["z","o"],
+            "commands": ["editor.unfold"]
+        },
+        {
+            "before": ["z","O"],
+            "commands": ["editor.unfoldRecursively"]
+        },
+        {
+            "before": ["<leader>","w"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<leader>","e"],
+            "commands": ["workbench.view.explorer"]
+        },
+        {
+            "before": ["<leader>","E"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+            "before": ["<leader>","w"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<leader>","n"],
+            "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"]
+        },
+        {
+            "before": ["]","e"],
+            "commands": ["editor.action.marker.nextInFiles"]
+        },
+        {
+            "before": ["[","e"],
+            "commands": ["editor.action.marker.prevInFiles"]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j"],
+            "after": ["g","j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g","k"]
+        },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"]
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"]
+        },
+    ],
+}

@@ -1,0 +1,6 @@
+aaron-bond.better-comments
+Catppuccin.catppuccin-vsc
+eamodio.gitlens
+ms-python.python
+ms-python.vscode-pylance
+vscodevim.vim

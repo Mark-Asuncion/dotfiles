@@ -1,0 +1,26 @@
+[
+    {
+        "command": "vim.remap",
+        "key": "alt+a",
+        "when": "inputFocus && vim.mode == 'Insert' || inputFocus && vim.mode == 'Normal' || inputFocus && vim.mode == 'Visual' || inputFocus && vim.mode == 'VisualLine'|| inputFocus && vim.mode == 'VisualBlock'",
+        "args": { "after": ["<Esc>"] }
+    },
+    {
+        "command": "vim.remap",
+        "key": "shift+k",
+        "when": "inputFocus && vim.mode == 'Normal'",
+        "command": "editor.action.showHover"
+    },
+    {
+        "command": "vim.remap",
+        "key": "alt+k",
+        "when": "inputFocus && vim.mode == 'Normal' || inputFocus && vim.mode == 'Visual' || inputFocus && vim.mode == 'VisualLine'|| inputFocus && vim.mode == 'VisualBlock'",
+        "command": "editor.action.moveLinesUpAction"
+    },
+    {
+        "command": "vim.remap",
+        "key": "alt+j",
+        "when": "inputFocus && vim.mode == 'Normal' || inputFocus && vim.mode == 'Visual' || inputFocus && vim.mode == 'VisualLine'|| inputFocus && vim.mode == 'VisualBlock'",
+        "command": "editor.action.moveLinesDownAction"
+    }
+]

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export PATH="/home/mark/.config/python3/bin:$PATH"
+
+alias vi='nvim'
+alias vim='nvim'
+alias ls='exa --group-directories-first --icons -F'
+alias l='exa --group-directories-first --icons -F -al'
+alias cls='clear'
+alias cat='batcat'
+# alias g++='x86_64-w64-mingw32-g++'
+# alias staticlib-g++='x86_64-w64-mingw32-g++ -static-libstdc++ -static-libgcc'
+alias clip='xclip -selection clipboard -f'
+alias wl-copy='wl-copy -f'
+alias grep='rg'
+# alias dua='dua interactive'
+alias scan='clamscan --verbose --max-filesize=2000M --max-scansize=2000M --recursive --infected --log=$HOME/clamscan.log'
