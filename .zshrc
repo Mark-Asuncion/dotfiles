@@ -9,3 +9,5 @@ source $ZSH/oh-my-zsh.sh
 if [ -f "$HOME/.usr_conf" ] ; then
     source "$HOME/.usr_conf"
 fi
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
