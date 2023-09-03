@@ -13,7 +13,7 @@ sudo apt install -y g++ gcc make cmake
 echo 'installing firewall...'
 sudo apt installing ufw gufw
 echo 'installing utilities'
-sudo apt install -y wget curl xclip fd-find ripgrep bat btop exa fzf
+sudo apt install -y wget curl xclip fd-find ripgrep bat btop exa fzf tar
 echo 'installing antivirus'
 sudo apt install -y clamav
 
