@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+baseDir="$1"
 
 echo 'installing nodejs v18.17.1'
 curl -O https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz && \
@@ -14,16 +15,16 @@ curl -O https://az764295.vo.msecnd.net/stable/6c3e3dba23e8fadc360aed75ce363ba185
 while read -r line
 do
     code --install-extension $line
-done < "$1"/config/vscode/extensions.txt
+done < "$baseDir"/config/vscode/extensions.txt
 
 if [ -f "$HOME"/.config/Code/User/settings.json ]; then
     mv "$HOME"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json.bak
 fi
-cp "$1"/config/vscode/settings.json "$HOME"/.config/Code/User/
+cp "$baseDir"/config/vscode/settings.json "$HOME"/.config/Code/User/
 if [ -f "$HOME"/.config/Code/User/keybindings.json ]; then
     mv "$HOME"/.config/Code/User/keybindings.json "$HOME"/.config/Code/User/keybindings.json.bak
 fi
-cp "$1"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
+cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
 
 echo 'installing Google Chrome'
 curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
@@ -35,3 +36,7 @@ wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.
     tar -xf nvim-*.tar.gz && \
     mv nvim-*/ "$HOME"/Apps/
 echo "export PATH=\"${HOME}/Apps/nvim-linux64/bin:\$PATH\"" >> "$HOME"/.usr_conf
+
+echo 'setting up nvim config'
+mkdir "$HOME"/.config/nvim/
+git clone https://github.com/Mark-Asuncion/NVIM-Config.git "$HOME"/.config/nvim/

@@ -21,9 +21,8 @@ echo 'installing flatpak'
 sudo apt install -y flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -u flathub com.github.tchx84.Flatseal
-flatpak install -u flathub com.gitlab.davem.ClamTk
-flatpak install -u flathub com.spotify.Client
+flatpak install -uy flathub com.github.tchx84.Flatseal
+flatpak install -uy flathub com.spotify.Client
 
 echo 'setting up python3'
 sudo apt install -y python3-venv python3-pip
@@ -39,20 +38,16 @@ echo 'setting up clangd config'
 mkdir "$HOME"/.config/clangd/
 cp config/clangd/* "$HOME"/.config/clangd/
 
-echo 'setting up nvim config'
-mkdir "$HOME"/.config/nvim/
-git clone https://github.com/Mark-Asuncion/NVIM-Config.git "$HOME"/.config/nvim/
-
-base="$(pwd)"
+baseDir="$(pwd)"
 mkdir tmp
 cd tmp
 mkdir "$HOME"/Apps
 
 ../fonts.sh
 
-../utils.sh "$base"
+../utils.sh "$baseDir"
 
-cd "$base"
+cd "$baseDir"
 rm -rf tmp/
 
 gufw
