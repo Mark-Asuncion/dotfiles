@@ -12,6 +12,7 @@ echo 'installing compilers'
 sudo apt install -y g++ gcc make cmake
 echo 'installing firewall...'
 sudo apt install -y ufw gufw
+sudo ufw enable
 echo 'installing utilities'
 sudo apt install -y wget curl xclip fd-find ripgrep bat btop exa fzf tar
 echo 'installing antivirus'
@@ -57,5 +58,3 @@ fi
 
 cd "$baseDir"
 rm -rf tmp/
-
-gufw
