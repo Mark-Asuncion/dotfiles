@@ -3,6 +3,7 @@ A setup helper for my Linux desktop
 # How to?
 * [Add User to Sudoers](#add-user-to-sudoers)
 * [Boot splash screen](#change-boot-splash-screen)
+* [Add contrib and non-free](#add-contrib-and-non-free)
 
 # Add User to Sudoers
 1. ```su -``` switches to root user
@@ -20,6 +21,9 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 ```
 and run
 ```sudo update-grub```
+# Add contrib and non-free
+edit ```/etc/apt/sources.list```<br>
+add ```contrib``` and ```non-free```
 
 ### TODO: create installation script
 * Install [zsh autosuggestion](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
