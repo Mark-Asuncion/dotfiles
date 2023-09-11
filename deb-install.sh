@@ -11,7 +11,7 @@ sudo apt install -y zsh kitty
 echo 'installing compilers'
 sudo apt install -y g++ gcc make cmake
 echo 'installing firewall...'
-sudo apt installing ufw gufw
+sudo apt install -y ufw gufw
 echo 'installing utilities'
 sudo apt install -y wget curl xclip fd-find ripgrep bat btop exa fzf tar
 echo 'installing antivirus'
@@ -26,22 +26,26 @@ flatpak install -uy flathub com.spotify.Client
 
 echo 'setting up python3'
 sudo apt install -y python3-venv python3-pip
-mkdir "$HOME"/.config/python3 -p
+mkdir -p "$HOME"/.config/python3
 python3 -m venv "$HOME"/.config/python3/
 source "$HOME"/.config/python3/bin/activate
 
 echo 'setting up kitty config'
-mkdir "$HOME"/.config/kitty/ -p
+mkdir -p "$HOME"/.config/kitty/
 cp config/kitty/* "$HOME"/.config/kitty/
 
 echo 'setting up clangd config'
-mkdir "$HOME"/.config/clangd/
+mkdir -p "$HOME"/.config/clangd/
 cp config/clangd/* "$HOME"/.config/clangd/
 
 baseDir="$(pwd)"
-mkdir tmp
+if [[ ! -d tmp/ ]]; then
+    mkdir tmp
+fi
 cd tmp
-mkdir "$HOME"/Apps
+if [[ ! -d "$HOME"/Apps ]]; then
+    mkdir "$HOME"/Apps
+fi
 
 ../fonts.sh
 
