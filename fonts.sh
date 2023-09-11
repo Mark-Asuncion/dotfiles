@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+mkdir -p "$HOME"/.local/share/fonts
 echo 'installing FiraCode'
 mkdir FiraCode
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.tar.xz && \
