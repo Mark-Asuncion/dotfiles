@@ -3,7 +3,6 @@ set -e
 
 echo 'copying dot config files'
 cp .usr_conf "$HOME"/
-cp .zshrc "$HOME"/
 cp .gitconfig "$HOME"/
 
 echo 'installing shell and terminal'
@@ -17,10 +16,6 @@ echo 'installing utilities'
 sudo apt install -y wget curl xclip fd-find ripgrep bat btop exa fzf tar
 echo 'installing antivirus'
 sudo apt install -y clamav
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo 'installing flatpak'
 sudo apt install -y flatpak
