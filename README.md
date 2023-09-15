@@ -24,8 +24,3 @@ and run
 # Add contrib and non-free
 edit ```/etc/apt/sources.list```<br>
 add ```contrib``` and ```non-free```
-
-### TODO: create installation script
-* Install [zsh autosuggestion](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
-* Install [zsh syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
-* Install [zsh autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
