@@ -6,4 +6,5 @@ noremap <leader>P "+P
 noremap <leader>y "+y
 noremap <leader>Y "+Y
 set nohlsearch
+set scrolloff 50
 nnoremap Y y$
