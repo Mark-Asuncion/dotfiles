@@ -4,3 +4,5 @@
 	logd = log --graph --decorate --oneline
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim
