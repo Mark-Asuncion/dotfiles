@@ -13,7 +13,11 @@ echo 'installing firewall...'
 sudo apt install -y ufw gufw
 sudo ufw enable
 echo 'installing utilities'
-sudo apt install -y wget curl xclip fd-find ripgrep bat btop exa fzf tar
+sudo apt install -y wget curl \
+    xclip fd-find \
+    ripgrep bat \
+    btop exa \
+    fzf tar
 echo 'installing antivirus'
 sudo apt install -y clamav
 
@@ -31,12 +35,14 @@ python3 -m venv "$HOME"/.config/python3/
 source "$HOME"/.config/python3/bin/activate
 
 echo 'setting up kitty config'
-mkdir -p "$HOME"/.config/kitty/
-cp config/kitty/* "$HOME"/.config/kitty/
+ln -s -r config/kitty/ "$HOME"/.config/
+# mkdir -p "$HOME"/.config/kitty/
+# cp config/kitty/* "$HOME"/.config/kitty/
 
 echo 'setting up clangd config'
-mkdir -p "$HOME"/.config/clangd/
-cp config/clangd/* "$HOME"/.config/clangd/
+ln -s -r config/clangd/ "$HOME"/.config/
+# mkdir -p "$HOME"/.config/clangd/
+# cp config/clangd/* "$HOME"/.config/clangd/
 
 baseDir="$(pwd)"
 if [[ ! -d tmp/ ]]; then
