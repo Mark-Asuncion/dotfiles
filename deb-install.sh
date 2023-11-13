@@ -23,8 +23,8 @@ sudo apt install -y clamav
 
 echo 'installing flatpak'
 sudo apt install -y flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -uy flathub com.github.tchx84.Flatseal
 flatpak install -uy flathub com.spotify.Client
 
