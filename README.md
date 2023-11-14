@@ -24,3 +24,5 @@ and run
 # Add contrib and non-free
 edit ```/etc/apt/sources.list```<br>
 add ```contrib``` and ```non-free```
+# Adjust System Clock
+```timedatectl set-local-rtc 1 --adjust-system-clock```
