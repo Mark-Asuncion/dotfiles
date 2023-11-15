@@ -2,7 +2,7 @@
 set -e
 
 sudo apt install kwin-bismuth
-ln -s -r config/kglobalshortcutsrc "$HOME"/.config/
+cp config/kglobalshortcutsrc "$HOME"/.config/
 workspace=$(pwd)
 mkdir tmp
 cd tmp
