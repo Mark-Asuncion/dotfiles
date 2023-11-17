@@ -53,7 +53,7 @@ _launch=Meta+Ctrl+M,none,Spotify
 
 [google-chrome.desktop]
 _k_friendly_name=Google Chrome
-_launch=Meta+Ctrl+C,none,Google Chrome
+_launch=Meta+C,none,Google Chrome
 new-private-window=none,none,New Incognito Window
 new-window=none,none,New Window
 
@@ -78,7 +78,7 @@ _k_friendly_name=Custom Shortcuts Service
 
 [kitty.desktop]
 _k_friendly_name=kitty
-_launch=Meta+Ctrl+T,none,kitty
+_launch=Meta+T,none,kitty
 
 [kmix]
 _k_friendly_name=Audio Volume
@@ -100,7 +100,7 @@ _k_friendly_name=Session Management
 [kwin]
 Activate Window Demanding Attention=Meta+Ctrl+A,Meta+Ctrl+A,Activate Window Demanding Attention
 Decrease Opacity=none,,Decrease Opacity of Active Window by 5%
-Edit Tiles=Meta+T,Meta+T,Toggle Tiles Editor
+Edit Tiles=none,Meta+T,Toggle Tiles Editor
 Expose=Ctrl+F9,Ctrl+F9,Toggle Present Windows (Current desktop)
 ExposeAll=Ctrl+F10\tLaunch (C),Ctrl+F10\tLaunch (C),Toggle Present Windows (All desktops)
 ExposeClass=Ctrl+F7,Ctrl+F7,Toggle Present Windows (Window class)
