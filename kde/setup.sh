@@ -23,9 +23,13 @@ make
 sudo make install
 cd "$workspace"/tmp
 
-echo 'Installing themes'
-git clone --depth=1 https://github.com/catppuccin/kde catppuccin-kde && \
-    cd catppuccin-kde
-./install.sh 1 13 2
+echo '-- Installing themes --'
+echo '0 - catppuccin-kde'
+read -p 'What theme to install: ' choice
+if [[ $choice -eq 0 ]]; then
+    git clone --depth=1 https://github.com/catppuccin/kde catppuccin-kde && \
+        cd catppuccin-kde
+        ./install.sh 1 13 2
+fi
 cd "$workspace"
 rm -rf tmp/
