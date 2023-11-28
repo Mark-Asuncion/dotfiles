@@ -4,6 +4,7 @@ A setup helper for my Linux desktop
 * [Add User to Sudoers](#add-user-to-sudoers)
 * [Boot splash screen](#change-boot-splash-screen)
 * [Add contrib and non-free](#add-contrib-and-non-free)
+* [Adjust System Clock](#Adjust-System-Clock)
 
 # Add User to Sudoers
 1. ```su -``` switches to root user

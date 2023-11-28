@@ -49,9 +49,6 @@ if [[ ! -d tmp/ ]]; then
     mkdir tmp
 fi
 cd tmp
-if [[ ! -d "$HOME"/Apps ]]; then
-    mkdir "$HOME"/Apps
-fi
 
 ../fonts.sh
 
