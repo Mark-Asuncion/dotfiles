@@ -4,8 +4,8 @@ A setup helper for my Linux desktop
 * [Add User to Sudoers](#add-user-to-sudoers)
 * [Boot splash screen](#change-boot-splash-screen)
 * [Add contrib and non-free](#add-contrib-and-non-free)
-* [Adjust System Clock](#Adjust-System-Clock)
-
+* [Adjust System Clock](#adjust-system-clock)
+* [File Sharing With Samba](#file-sharing)
 # Add User to Sudoers
 1. ```su -``` switches to root user
 2. ```usermod -aG sudo <username>```
@@ -27,3 +27,34 @@ edit ```/etc/apt/sources.list```<br>
 add ```contrib``` and ```non-free```
 # Adjust System Clock
 ```timedatectl set-local-rtc 1 --adjust-system-clock```
+# File Sharing
+- install
+```
+sudo apt install -y samba
+```
+- create a folder where you wanna share files<br>
+- edit ```/etc/samba/smb.conf``` and add this
+```
+[sambashare]
+   comment = Share Folder
+   path = <folder-location>
+   browseable = yes
+   read only = no
+```
+- restart the service
+```
+sudo service smbd restart
+```
+- allow samba in firewall
+```
+sudo ufw allow samba
+```
+- add password to the user (existing user)
+```
+sudo smbpasswd -a username
+```
+- To connect to samba
+```
+smb://<ip-address>/
+```
+***shared files will be available in sambashare***
