@@ -1,1 +1,0 @@
-When running .zshrc exit the shell after oh-my-zsh is installed because consecutive lines will not execute
