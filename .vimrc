@@ -10,5 +10,7 @@ vnoremap P "0P
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
 set nohlsearch
-set scrolloff 50
+set scrolloff=50
+set ignorecase
+set smartcase
 nnoremap Y y$
