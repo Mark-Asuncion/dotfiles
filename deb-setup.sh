@@ -9,7 +9,7 @@ echo 'installing shell and terminal'
 sudo apt install -y zsh kitty
 echo 'installing compilers'
 sudo apt install -y g++ gcc make cmake
-echo 'installing firewall...'
+echo 'installing firewall'
 sudo apt install -y ufw gufw
 sudo ufw enable
 echo 'installing utilities'

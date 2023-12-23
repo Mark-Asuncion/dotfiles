@@ -26,7 +26,9 @@ and run
 edit ```/etc/apt/sources.list```<br>
 add ```contrib``` and ```non-free```
 # Adjust System Clock
-```timedatectl set-local-rtc 1 --adjust-system-clock```
+```
+timedatectl set-local-rtc 1 --adjust-system-clock
+```
 # File Sharing
 - install
 ```
