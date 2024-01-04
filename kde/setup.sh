@@ -23,10 +23,31 @@ make
 sudo make install
 cd "$workspace"/tmp
 
-echo '-- Installing themes --'
-echo '0 - catppuccin-kde'
+function create_dir ()
+{
+    if [[ ! -d $1 ]]; then
+        mkdir -p $1
+    fi
+}
+
+echo '-- Installing theme --'
+echo '0 - Nordic (Default)'
+echo '1 - catppuccin-kde'
 read -p 'What theme to install: ' choice
+d_share="$HOME/.local/share"
 if [[ $choice -eq 0 ]]; then
+    git clone https://github.com/EliverLara/Nordic.git && \
+        cd Nordic/kde
+    create_dir $d_share/aurorae/themes/
+    cp -r aurorae/Nordic $d_share/aurorae/themes
+    create_dir $d_share/color-schemes/
+    cp colorschemes/* $d_share/color-schemes
+    create_dir $d_share/icons/
+    cp -r folders/* $d_share/icons
+    create_dir $d_share/plasma/look-and-feel/
+    cp -r plasma/look-and-feel/* $d_share/plasma/look-and-feel/
+
+elif [[ $choice -eq 1 ]]; then
     git clone --depth=1 https://github.com/catppuccin/kde catppuccin-kde && \
         cd catppuccin-kde
         ./install.sh 1 13 2
