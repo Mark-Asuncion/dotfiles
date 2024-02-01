@@ -1,6 +1,9 @@
 aaron-bond.better-comments
-Catppuccin.catppuccin-vsc
-eamodio.gitlens
+akamud.vscode-theme-onedark
+llvm-vs-code-extensions.vscode-clangd
+ms-dotnettools.csdevkit
+ms-dotnettools.csharp
+ms-dotnettools.vscode-dotnet-runtime
 ms-python.python
 ms-python.vscode-pylance
 vscodevim.vim

@@ -6,21 +6,29 @@
         "args": { "after": ["<Esc>"] }
     },
     {
-        "command": "vim.remap",
         "key": "shift+k",
-        "when": "inputFocus && vim.mode == 'Normal'",
+        "when": "vim.active && inputFocus && vim.mode == 'Normal'",
         "command": "editor.action.showHover"
     },
     {
-        "command": "vim.remap",
         "key": "alt+k",
-        "when": "inputFocus && vim.mode == 'Normal' || inputFocus && vim.mode == 'Visual' || inputFocus && vim.mode == 'VisualLine'|| inputFocus && vim.mode == 'VisualBlock'",
+        "when": "vim.active && inputFocus && vim.mode == 'Normal' || inputFocus && vim.mode == 'Visual' || inputFocus && vim.mode == 'VisualLine'|| inputFocus && vim.mode == 'VisualBlock'",
         "command": "editor.action.moveLinesUpAction"
     },
     {
-        "command": "vim.remap",
         "key": "alt+j",
-        "when": "inputFocus && vim.mode == 'Normal' || inputFocus && vim.mode == 'Visual' || inputFocus && vim.mode == 'VisualLine'|| inputFocus && vim.mode == 'VisualBlock'",
+        "when": "vim.active && inputFocus && vim.mode == 'Normal' || inputFocus && vim.mode == 'Visual' || inputFocus && vim.mode == 'VisualLine'|| inputFocus && vim.mode == 'VisualBlock'",
         "command": "editor.action.moveLinesDownAction"
+    },
+    {
+        "key": "shift+l",
+        "when": "vim.active && inputFocus && vim.mode == 'Normal'",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "shift+h",
+        "when": "vim.active && inputFocus && vim.mode == 'Normal'",
+        "command": "workbench.action.navigateBack"
     }
+
 ]

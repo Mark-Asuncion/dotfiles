@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.colorTheme": "Atom One Dark",
     "window.zoomLevel": 1,
     "editor.cursorStyle": "block-outline",
     "terminal.integrated.defaultProfile.linux": "zsh",
@@ -62,10 +62,6 @@
             "commands": ["workbench.action.closeActiveEditor"]
         },
         {
-            "before": ["<leader>","n"],
-            "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"]
-        },
-        {
             "before": ["]","e"],
             "commands": ["editor.action.marker.nextInFiles"]
         },
@@ -92,4 +88,5 @@
             "commands": ["editor.action.outdentLines"]
         },
     ],
+    "debug.allowBreakpointsEverywhere": true,
 }
