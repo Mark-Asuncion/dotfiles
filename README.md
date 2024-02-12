@@ -6,6 +6,7 @@ A setup helper for my Linux desktop
 * [Add contrib and non-free](#add-contrib-and-non-free)
 * [Adjust System Clock](#adjust-system-clock)
 * [File Sharing With Samba](#file-sharing)
+* [Check Sha256sum](#check-sha256sum)
 # Add User to Sudoers
 1. ```su -``` switches to root user
 2. ```usermod -aG sudo <username>```
@@ -60,3 +61,9 @@ sudo smbpasswd -a username
 smb://<ip-address>/
 ```
 ***shared files will be available in sambashare***
+# Check Sha256sum
+```
+echo '<sha256sum> <filename>' | sha256sum -c
+# or
+sha256sum -c <filename.sha256>
+```
