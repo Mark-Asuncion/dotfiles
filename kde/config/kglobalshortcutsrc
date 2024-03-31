@@ -51,6 +51,10 @@ toggle_window_floating=Meta+F,Meta+F,Toggle Active Window Floating
 _k_friendly_name=Spotify
 _launch=Meta+Ctrl+M,none,Spotify
 
+[firefox-esr.desktop]
+_k_friendly_name=Firefox ESR
+_launch=Meta+B,none,Firefox ESR
+
 [google-chrome.desktop]
 _k_friendly_name=Google Chrome
 _launch=Meta+C,none,Google Chrome
