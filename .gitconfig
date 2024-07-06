@@ -1,8 +1,9 @@
 [user]
-	name = Mark-Asuncion
+    name = Mark-Asuncion
+    email = <replaceme>
 [alias]
-	logd = log --graph --decorate --oneline
+    logd = log --graph --decorate --oneline
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [core]
-	editor = nvim
+    editor = nvim
