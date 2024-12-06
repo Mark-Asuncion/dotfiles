@@ -88,7 +88,7 @@ function install_utils {
         echo "export PATH=\"/opt/node-v18.17.1-linux-x64/bin:\$PATH\"" >> "$HOME"/.usr_conf
 
     echo 'installing neovim'
-    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz && \
+    wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz && \
         tar -xf nvim-*.tar.gz && \
         sudo mv nvim-*/ /opt/ && \
         echo "export PATH=\"/opt/nvim-linux64/bin:\$PATH\"" >> "$HOME"/.usr_conf
