@@ -69,6 +69,14 @@
             "before": ["[","e"],
             "commands": ["editor.action.marker.prevInFiles"]
         },
+        {
+            "before": ["<leader>","c", "a"],
+            "commands": ["editor.action.codeAction"]
+        },
+        {
+            "before": ["<leader>","c", "r"],
+            "commands": ["editor.action.rename"]
+        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -86,7 +94,7 @@
         {
             "before": ["<"],
             "commands": ["editor.action.outdentLines"]
-        },
+        }
     ],
     "debug.allowBreakpointsEverywhere": true,
 }
