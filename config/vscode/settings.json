@@ -3,8 +3,8 @@
     "window.zoomLevel": 1,
     "editor.cursorStyle": "block-outline",
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "editor.fontSize": 15,
-    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'monospace', monospace",
+    "editor.fontSize": 16,
+    "editor.fontFamily": "JetBrainsMono Nerd Font Mono, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled": false,
@@ -12,7 +12,6 @@
 
     "vim.easymotion": true,
     "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": false,
     "vim.leader": "<space>",
@@ -76,9 +75,37 @@
         {
             "before": ["<leader>","c", "r"],
             "commands": ["editor.action.rename"]
+        },
+        {
+            "before": ["g", "r"],
+            "commands": ["editor.action.goToReferences"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {
+            "before": ["<leader>", "P"],
+            "after": ["\"", "+", "P"]
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "y"],
+            "after": ["\"", "+", "y"]
+        },
+        {
+            "before": ["<leader>", "Y"],
+            "after": ["\"", "+", "y", "$"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {
+            "before": ["<leader>", "P"],
+            "after": ["\"", "+", "P"]
+        },
         {
             "before": ["j"],
             "after": ["g","j"]
@@ -95,6 +122,5 @@
             "before": ["<"],
             "commands": ["editor.action.outdentLines"]
         }
-    ],
-    "debug.allowBreakpointsEverywhere": true,
+    ]
 }
