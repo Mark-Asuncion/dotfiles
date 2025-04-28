@@ -7,6 +7,7 @@ A setup helper for my Linux desktop
 * [Adjust System Clock](#adjust-system-clock)
 * [File Sharing With Samba](#file-sharing)
 * [Check Sha256sum](#check-sha256sum)
+* [Run application with dedicated gpu](#run-with-dedicated-gpu)
 # Add User to Sudoers
 1. ```su -``` switches to root user
 2. ```usermod -aG sudo <username>```
@@ -66,4 +67,8 @@ smb://<ip-address>/
 echo '<sha256sum> <filename>' | sha256sum -c
 # or
 sha256sum -c <filename.sha256>
+```
+# Run with dedicated gpu
+```
+DRI_PRIME=1 <application>
 ```
