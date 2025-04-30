@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 cd "$(dirname "$0")"
 
@@ -8,6 +9,7 @@ cp .gitconfig "$HOME"/
 
 echo 'installing shell and terminal'
 sudo apt install -y zsh kitty
+./extra/zsh.sh
 echo 'installing compilers'
 sudo apt install -y g++ gcc make cmake
 echo 'installing firewall'
@@ -53,42 +55,42 @@ cd tmp
 function install_fonts {
     echo 'Installing Fonts'
     mkdir -p "$HOME"/.local/share/fonts
-    echo 'installing FiraCode'
-    mkdir FiraCode
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.tar.xz && \
-        tar -xf Fira*.tar.xz --directory=FiraCode && \
-        cp -r FiraCode "$HOME"/.local/share/fonts/FiraCode
+    # echo 'installing FiraCode'
+    # mkdir FiraCode
+    # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.tar.xz && \
+    #     tar -xf Fira*.tar.xz --directory=FiraCode && \
+    #     cp -r FiraCode "$HOME"/.local/share/fonts/FiraCode
 
     echo 'installing JetBrainsMono'
     mkdir JetBrainsMono
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.tar.xz && \
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.tar.xz && \
         tar -xf JetBrainsMono.tar.xz --directory=JetBrainsMono && \
         cp -r JetBrainsMono "$HOME"/.local/share/fonts/JetBrainsMono
 
-    echo 'installing SpaceMono'
-    mkdir SpaceMono
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SpaceMono.tar.xz && \
-        tar -xf SpaceMono.tar.xz --directory=SpaceMono && \
-        cp -r SpaceMono "$HOME"/.local/share/fonts/SpaceMono
+    # echo 'installing SpaceMono'
+    # mkdir SpaceMono
+    # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SpaceMono.tar.xz && \
+    #     tar -xf SpaceMono.tar.xz --directory=SpaceMono && \
+    #     cp -r SpaceMono "$HOME"/.local/share/fonts/SpaceMono
 
-    echo 'installing RobotoMono'
-    mkdir RobotoMono
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/RobotoMono.tar.xz && \
-        tar -xf RobotoMono.tar.xz --directory=RobotoMono && \
-        cp -r RobotoMono "$HOME"/.local/share/fonts/RobotoMono
+    # echo 'installing RobotoMono'
+    # mkdir RobotoMono
+    # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/RobotoMono.tar.xz && \
+    #     tar -xf RobotoMono.tar.xz --directory=RobotoMono && \
+    #     cp -r RobotoMono "$HOME"/.local/share/fonts/RobotoMono
 
     fc-cache -fv
 }
 
 function install_utils {
     echo 'installing nodejs v18.17.1'
-    curl -O https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-x64.tar.xz && \
+    curl -O https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz && \
         tar -xf node-*.tar.xz && \
         sudo mv node-*/ /opt/ && \
         echo "export PATH=\"/opt/node-v18.17.1-linux-x64/bin:\$PATH\"" >> "$HOME"/.usr_conf
 
     echo 'installing neovim'
-    wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-linux64.tar.gz && \
+    wget https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz && \
         tar -xf nvim-*.tar.gz && \
         sudo mv nvim-*/ /opt/ && \
         echo "export PATH=\"/opt/nvim-linux64/bin:\$PATH\"" >> "$HOME"/.usr_conf
@@ -97,15 +99,15 @@ function install_utils {
     mkdir "$HOME"/.config/nvim/
     git clone https://github.com/Mark-Asuncion/NVIM-Config.git "$HOME"/.config/nvim/
 
-    echo 'installing lazygit'
-    mkdir lazygit_0.40.2_Linux_x86_64
-    wget https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz && \
-        tar -xf lazygit*.tar.gz --directory=lazygit_0.40.2_Linux_x86_64 && \
-        sudo mv lazygit*/ /opt/ && \
-        echo "export PATH=\"/opt/lazygit_0.40.2_Linux_x86_64:\$PATH\"" >> "$HOME"/.usr_conf
+    # echo 'installing lazygit'
+    # mkdir lazygit_0.40.2_Linux_x86_64
+    # wget https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz && \
+    #     tar -xf lazygit*.tar.gz --directory=lazygit_0.40.2_Linux_x86_64 && \
+    #     sudo mv lazygit*/ /opt/ && \
+    #     echo "export PATH=\"/opt/lazygit_0.40.2_Linux_x86_64:\$PATH\"" >> "$HOME"/.usr_conf
 
     echo 'installing vscode'
-    curl -O https://az764295.vo.msecnd.net/stable/6c3e3dba23e8fadc360aed75ce363ba185c49794/code_1.81.1-1691620686_amd64.deb && \
+    curl -O "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" && \
         sudo dpkg -i code_1.*.deb
     sudo apt-get install -f
 
@@ -123,10 +125,10 @@ function install_utils {
     fi
     cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
 
-    echo 'installing Google Chrome'
-    curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-        sudo dpkg -i google-chrome*.deb
-    sudo apt-get install -f
+    # echo 'installing Google Chrome'
+    # curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    #     sudo dpkg -i google-chrome*.deb
+    # sudo apt-get install -f
 }
 
 install_fonts

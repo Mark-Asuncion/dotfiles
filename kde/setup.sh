@@ -34,6 +34,7 @@ echo '-- Installing theme --'
 echo '0 - Nordic (Default)'
 echo '1 - catppuccin-kde'
 read -p 'What theme to install: ' choice
+choice=${choice:-0}
 d_share="$HOME/.local/share"
 if [[ $choice -eq 0 ]]; then
     git clone https://github.com/EliverLara/Nordic.git && \
