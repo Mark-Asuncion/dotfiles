@@ -20,7 +20,7 @@ sudo apt install -y wget curl \
     xclip fd-find \
     ripgrep bat \
     btop exa \
-    fzf tar
+    fzf tar neofetch
 echo 'installing antivirus'
 sudo apt install -y clamav
 
