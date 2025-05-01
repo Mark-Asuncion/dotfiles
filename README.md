@@ -26,7 +26,7 @@ and run
 ```sudo update-grub```
 # Add contrib and non-free
 edit ```/etc/apt/sources.list```<br>
-add ```contrib``` and ```non-free```
+add ```contrib``` and ```non-free``` and ```non-free-firmware```
 # Adjust System Clock
 ```
 timedatectl set-local-rtc 1 --adjust-system-clock
