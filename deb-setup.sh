@@ -8,7 +8,8 @@ cp .usr_conf "$HOME"/
 cp .gitconfig "$HOME"/
 
 echo 'installing shell and terminal'
-sudo apt install -y zsh kitty
+sudo apt install -y zsh alacritty
+ln -sr ./config/alacritty/ "$HOME"/.config/
 ./extra/zsh.sh
 echo 'installing compilers'
 sudo apt install -y g++ gcc make cmake
@@ -35,11 +36,6 @@ sudo apt install -y python3-venv python3-pip
 mkdir -p "$HOME"/.config/python3
 python3 -m venv "$HOME"/.config/python3/
 # source "$HOME"/.config/python3/bin/activate
-
-echo 'setting up kitty config'
-ln -s -r config/kitty/ "$HOME"/.config/
-# mkdir -p "$HOME"/.config/kitty/
-# cp config/kitty/* "$HOME"/.config/kitty/
 
 echo 'setting up clangd config'
 ln -s -r config/clangd/ "$HOME"/.config/
@@ -87,13 +83,13 @@ function install_utils {
     curl -O https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz && \
         tar -xf node-*.tar.xz && \
         sudo mv node-*/ /opt/ && \
-        echo "export PATH=\"/opt/node-v18.17.1-linux-x64/bin:\$PATH\"" >> "$HOME"/.usr_conf
+        echo "export PATH=\"/opt/node-v22.15.0-linux-x64/bin:\$PATH\"" >> "$HOME"/.usr_conf
 
     echo 'installing neovim'
     wget https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz && \
         tar -xf nvim-*.tar.gz && \
         sudo mv nvim-*/ /opt/ && \
-        echo "export PATH=\"/opt/nvim-linux64/bin:\$PATH\"" >> "$HOME"/.usr_conf
+        echo "export PATH=\"/opt/nvim-linux-x86_64/bin:\$PATH\"" >> "$HOME"/.usr_conf
 
     echo 'setting up nvim config'
     mkdir "$HOME"/.config/nvim/
@@ -106,24 +102,24 @@ function install_utils {
     #     sudo mv lazygit*/ /opt/ && \
     #     echo "export PATH=\"/opt/lazygit_0.40.2_Linux_x86_64:\$PATH\"" >> "$HOME"/.usr_conf
 
-    echo 'installing vscode'
-    curl -O "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" && \
-        sudo dpkg -i code_1.*.deb
-    sudo apt-get install -f
-
-    while read -r line
-    do
-        code --install-extension $line
-    done < "$baseDir"/config/vscode/extensions.txt
-
-    if [ -f "$HOME"/.config/Code/User/settings.json ]; then
-        mv "$HOME"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json.bak
-    fi
-    cp "$baseDir"/config/vscode/settings.json "$HOME"/.config/Code/User/
-    if [ -f "$HOME"/.config/Code/User/keybindings.json ]; then
-        mv "$HOME"/.config/Code/User/keybindings.json "$HOME"/.config/Code/User/keybindings.json.bak
-    fi
-    cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
+    # echo 'installing vscode'
+    # curl -O "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" && \
+    #     sudo dpkg -i code_1.*.deb
+    # sudo apt-get install -f
+    #
+    # while read -r line
+    # do
+    #     code --install-extension $line
+    # done < "$baseDir"/config/vscode/extensions.txt
+    #
+    # if [ -f "$HOME"/.config/Code/User/settings.json ]; then
+    #     mv "$HOME"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json.bak
+    # fi
+    # cp "$baseDir"/config/vscode/settings.json "$HOME"/.config/Code/User/
+    # if [ -f "$HOME"/.config/Code/User/keybindings.json ]; then
+    #     mv "$HOME"/.config/Code/User/keybindings.json "$HOME"/.config/Code/User/keybindings.json.bak
+    # fi
+    # cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
 
     # echo 'installing Google Chrome'
     # curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
