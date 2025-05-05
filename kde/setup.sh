@@ -2,7 +2,6 @@
 set -e
 
 sudo apt install kwin-bismuth
-cp config/kglobalshortcutsrc "$HOME"/.config/
 workspace=$(pwd)
 mkdir tmp
 cd tmp
@@ -38,7 +37,7 @@ if [[ $choice == 'y' ]] || [[ $choice == 'Y' ]]; then
 fi
 
 echo '-- Installing theme --'
-echo '0 - Nordic (Default)'
+echo '0 - Nordic With Papirus Icons (Default)'
 echo '1 - catppuccin-kde'
 read -p 'What theme to install: ' choice
 choice=${choice:-0}
@@ -54,6 +53,7 @@ if [[ $choice -eq 0 ]]; then
     cp -r folders/* $d_share/icons
     create_dir $d_share/plasma/look-and-feel/
     cp -r plasma/look-and-feel/* $d_share/plasma/look-and-feel/
+    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
 
 elif [[ $choice -eq 1 ]]; then
     git clone --depth=1 https://github.com/catppuccin/kde catppuccin-kde && \
