@@ -3,71 +3,46 @@ set -e
 
 cd "$(dirname "$0")"
 
-echo 'copying dot config files'
-cp .usr_conf "$HOME"/
-cp .gitconfig "$HOME"/
+function system_tools {
+    echo 'copying dot config files'
+    cp .usr_conf "$HOME"/
+    cp .gitconfig "$HOME"/
 
-echo 'installing shell and terminal'
-sudo apt install -y zsh alacritty
-ln -sr ./config/alacritty/ "$HOME"/.config/
-./extra/zsh.sh
-echo 'installing compilers'
-sudo apt install -y g++ gcc make cmake
-echo 'installing firewall'
-sudo apt install -y ufw gufw
-sudo ufw enable
-echo 'installing utilities'
-sudo apt install -y wget curl \
-    xclip fd-find \
-    ripgrep bat \
-    btop exa \
-    fzf tar neofetch
-echo 'installing antivirus'
-sudo apt install -y clamav
+    echo 'installing shell and terminal'
+    sudo apt install -y zsh alacritty
+    ln -sr ./config/alacritty/ "$HOME"/.config/
+    ./extra/zsh.sh
 
-echo 'installing flatpak'
-sudo apt install -y flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-# flatpak install -y flathub com.github.tchx84.Flatseal
-sudo flatpak install -y flathub com.spotify.Client
+    echo 'installing firewall'
+    sudo apt install -y ufw gufw
+    sudo ufw enable
 
-echo 'setting up python3'
-sudo apt install -y python3-venv python3-pip
-mkdir -p "$HOME"/.config/python3
-python3 -m venv "$HOME"/.config/python3/
-# source "$HOME"/.config/python3/bin/activate
+    echo 'installing utilities'
+    sudo apt install -y wget curl \
+        xclip fd-find \
+        ripgrep bat \
+        btop exa \
+        fzf tar neofetch
+    echo 'installing antivirus'
+    sudo apt install -y clamav
 
-echo 'setting up clangd config'
-ln -s -r config/clangd/ "$HOME"/.config/
-# mkdir -p "$HOME"/.config/clangd/
-# cp config/clangd/* "$HOME"/.config/clangd/
-
-baseDir="$(pwd)"
-if [[ ! -d tmp/ ]]; then
-    mkdir tmp
-fi
-cd tmp
+    echo 'installing flatpak'
+    sudo apt install -y flatpak
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    # flatpak install -y flathub com.github.tchx84.Flatseal
+    flatpak install flathub -y com.spotify.Client
+    flatpak install flathub -y net.lutris.Lutris
+}
 
 function install_fonts {
     echo 'Installing Fonts'
     mkdir -p "$HOME"/.local/share/fonts
-    # echo 'installing FiraCode'
-    # mkdir FiraCode
-    # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.tar.xz && \
-    #     tar -xf Fira*.tar.xz --directory=FiraCode && \
-    #     cp -r FiraCode "$HOME"/.local/share/fonts/FiraCode
 
     echo 'installing JetBrainsMono'
     mkdir JetBrainsMono
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.tar.xz && \
         tar -xf JetBrainsMono.tar.xz --directory=JetBrainsMono && \
         cp -r JetBrainsMono "$HOME"/.local/share/fonts/JetBrainsMono
-
-    # echo 'installing SpaceMono'
-    # mkdir SpaceMono
-    # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/SpaceMono.tar.xz && \
-    #     tar -xf SpaceMono.tar.xz --directory=SpaceMono && \
-    #     cp -r SpaceMono "$HOME"/.local/share/fonts/SpaceMono
 
     # echo 'installing RobotoMono'
     # mkdir RobotoMono
@@ -79,7 +54,18 @@ function install_fonts {
 }
 
 function install_utils {
-    echo 'installing nodejs v18.17.1'
+    echo 'installing c/c++'
+    sudo apt install -y g++ gcc make cmake
+
+    echo 'setting up python3'
+    sudo apt install -y python3-venv python3-pip
+    mkdir -p "$HOME"/.config/python3
+    python3 -m venv "$HOME"/.config/python3/
+
+    echo 'setting up clangd config'
+    ln -s -r "$baseDir"/config/clangd/ "$HOME"/.config/
+
+    echo 'installing nodejs'
     curl -O https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz && \
         tar -xf node-*.tar.xz && \
         sudo mv node-*/ /opt/ && \
@@ -95,41 +81,36 @@ function install_utils {
     mkdir "$HOME"/.config/nvim/
     git clone https://github.com/Mark-Asuncion/NVIM-Config.git "$HOME"/.config/nvim/
 
-    # echo 'installing lazygit'
-    # mkdir lazygit_0.40.2_Linux_x86_64
-    # wget https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz && \
-    #     tar -xf lazygit*.tar.gz --directory=lazygit_0.40.2_Linux_x86_64 && \
-    #     sudo mv lazygit*/ /opt/ && \
-    #     echo "export PATH=\"/opt/lazygit_0.40.2_Linux_x86_64:\$PATH\"" >> "$HOME"/.usr_conf
+    echo 'installing vscode'
+    curl -O "https://vscode.download.prss.microsoft.com/dbazure/download/stable/17baf841131aa23349f217ca7c570c76ee87b957/code_1.99.3-1744761595_amd64.deb" && \
+        sudo dpkg -i code*.deb
+    sudo apt-get install -f
 
-    # echo 'installing vscode'
-    # curl -O "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" && \
-    #     sudo dpkg -i code_1.*.deb
-    # sudo apt-get install -f
-    #
-    # while read -r line
-    # do
-    #     code --install-extension $line
-    # done < "$baseDir"/config/vscode/extensions.txt
-    #
-    # if [ -f "$HOME"/.config/Code/User/settings.json ]; then
-    #     mv "$HOME"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json.bak
-    # fi
-    # cp "$baseDir"/config/vscode/settings.json "$HOME"/.config/Code/User/
-    # if [ -f "$HOME"/.config/Code/User/keybindings.json ]; then
-    #     mv "$HOME"/.config/Code/User/keybindings.json "$HOME"/.config/Code/User/keybindings.json.bak
-    # fi
-    # cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
+    while read -r line
+    do
+        code --install-extension $line
+    done < "$baseDir"/config/vscode/extensions.txt
 
-    # echo 'installing Google Chrome'
-    # curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    #     sudo dpkg -i google-chrome*.deb
-    # sudo apt-get install -f
+    if [ -f "$HOME"/.config/Code/User/settings.json ]; then
+        mv "$HOME"/.config/Code/User/settings.json "$HOME"/.config/Code/User/settings.json.bak
+    fi
+    cp "$baseDir"/config/vscode/settings.json "$HOME"/.config/Code/User/
+    if [ -f "$HOME"/.config/Code/User/keybindings.json ]; then
+        mv "$HOME"/.config/Code/User/keybindings.json "$HOME"/.config/Code/User/keybindings.json.bak
+    fi
+    cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
 }
 
-install_fonts
+system_tools
 
+baseDir="$(pwd)"
+if [[ ! -d ./tmp/ ]]; then
+    mkdir tmp
+fi
+cd tmp
+
+install_fonts
 install_utils
 
 cd "$baseDir"
-rm -rf tmp/
+rm -rf ./tmp/
