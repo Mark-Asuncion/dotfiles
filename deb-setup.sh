@@ -22,7 +22,8 @@ function system_tools {
         xclip fd-find \
         ripgrep bat \
         btop exa \
-        fzf tar neofetch
+        fzf tar neofetch \
+        vlc qbittorrent
     echo 'installing antivirus'
     sudo apt install -y clamav
 
