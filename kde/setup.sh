@@ -1,7 +1,12 @@
 #!/bin/bash
 set -e
 
+cd "$(dirname "$0")"
+
 sudo apt install kwin-bismuth
+mkdir -p ~/.local/share/applications/
+desktop-file-install --dir ~/.local/share/applications/ --set-key=Exec \
+    --set-value="$(pwd)/toggle-bismuth.sh" togglebismuth.desktop
 workspace=$(pwd)
 mkdir tmp
 cd tmp
