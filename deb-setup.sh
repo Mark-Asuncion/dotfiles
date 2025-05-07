@@ -10,7 +10,7 @@ function system_tools {
 
     echo 'installing shell and terminal'
     sudo apt install -y zsh alacritty
-    ln -sr ./config/alacritty/ "$HOME"/.config/
+    ln -sr ./config/alacritty/alacritty.yml "$HOME"/.config/alacritty/
     ./extra/zsh.sh
 
     echo 'installing firewall'
@@ -55,6 +55,7 @@ function install_fonts {
 }
 
 function install_utils {
+    baseDir=$1
     echo 'installing c/c++'
     sudo apt install -y g++ gcc make cmake
 
@@ -102,16 +103,12 @@ function install_utils {
     cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
 }
 
-system_tools
-
 baseDir="$(pwd)"
-if [[ ! -d ./tmp/ ]]; then
-    mkdir tmp
-fi
-cd tmp
+mkdir -p /tmp/debsetup
+cd /tmp/debsetup
 
+system_tools
 install_fonts
-install_utils
+install_utils $baseDir
 
 cd "$baseDir"
-rm -rf ./tmp/

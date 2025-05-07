@@ -42,12 +42,18 @@ if [[ $choice == 'y' ]] || [[ $choice == 'Y' ]]; then
 fi
 
 echo '-- Installing theme --'
-echo '0 - Nordic With Papirus Icons (Default)'
-echo '1 - catppuccin-kde'
+echo '0 - OneDark Colorscheme with Papirus Icons (Default)'
+echo '1 - Nordic With Papirus Icons'
+echo '2 - catppuccin-kde'
 read -p 'What theme to install: ' choice
 choice=${choice:-0}
 d_share="$HOME/.local/share"
 if [[ $choice -eq 0 ]]; then
+    git clone https://github.com/Prayag2/kde_onedark.git && \
+        cd kde_onedark
+    cp color-schemes/One-Dark/* $d_share/color-schemes
+    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
+elif [[ $choice -eq 1 ]]; then
     git clone https://github.com/EliverLara/Nordic.git && \
         cd Nordic/kde
     create_dir $d_share/aurorae/themes/
