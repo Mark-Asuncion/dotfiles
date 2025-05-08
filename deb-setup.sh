@@ -103,11 +103,12 @@ function install_utils {
     cp "$baseDir"/config/vscode/keybindings.json "$HOME"/.config/Code/User/
 }
 
+system_tools
+
 baseDir="$(pwd)"
 mkdir -p /tmp/debsetup
 cd /tmp/debsetup
 
-system_tools
 install_fonts
 install_utils $baseDir
 
