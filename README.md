@@ -8,6 +8,7 @@ A setup helper for my Linux desktop
 * [File Sharing With Samba](#file-sharing)
 * [Check Sha256sum](#check-sha256sum)
 * [Run application with dedicated gpu](#run-with-dedicated-gpu)
+* [Power Profiles in Kde or Gnome](#power-profiles)
 # Add User to Sudoers
 1. ```su -``` switches to root user
 2. ```usermod -aG sudo <username>```
@@ -71,4 +72,17 @@ sha256sum -c <filename.sha256>
 # Run with dedicated gpu
 ```
 DRI_PRIME=1 <application>
+```
+# Power Profiles
+more on [gitlab/power-profiles-daemon](https://gitlab.freedesktop.org/upower/power-profiles-daemon#power-profiles-daemon)
+```
+sudo apt install -y power-profiles-daemon
+# list available profiles
+powerprofilesctl list
+# set to performance
+powerprofilesctl set performance
+```
+View power profile on reboot
+```
+cat /var/lib/power-profiles-daemon/state.ini
 ```

@@ -2,8 +2,10 @@
 set -e
 
 cd "$(dirname "$0")"
+sudo apt install kwin-bismuth power-profiles-daemon
+echo 'Settting power profile to performance'
+powerprofilesctl set performance
 
-sudo apt install kwin-bismuth
 mkdir -p ~/.local/share/applications/
 desktop-file-install --dir ~/.local/share/applications/ --set-key=Exec \
     --set-value="$(pwd)/toggle-bismuth.sh" togglebismuth.desktop
