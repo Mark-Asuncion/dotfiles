@@ -10,6 +10,7 @@ function system_tools {
 
     echo 'installing shell and terminal'
     sudo apt install -y zsh alacritty
+    mkdir -p "$HOME"/.config/alacritty/
     ln -sr ./config/alacritty/alacritty.yml "$HOME"/.config/alacritty/
     ./extra/zsh.sh
 
