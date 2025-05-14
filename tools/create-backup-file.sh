@@ -1,8 +1,26 @@
 #!/bin/bash
 set -e
 
-file_path=$1
+file_path=""
+use_move=0
+for arg in "$@"; do
+  case "$arg" in
+    "-m")
+      use_move=1
+      ;;
+    *)
+        file_path=$1
+      ;;
+  esac
+done
+
+function usage {
+    echo "USAGE:"
+    echo "./create-backup-file.sh [-m] <file_path>"
+}
+
 if [[ -z "$file_path" ]]; then
+    usage
     exit 0
 fi
 
@@ -23,10 +41,17 @@ else
     extension=""
 fi
 
+out_path=""
 if [[ -z "$extension" ]]; then
-    # echo "$file_path" "${parent}/${fname}_${now}"
-    cp "$file_path" "${parent}/${fname}_${now}"
+    out_path="${parent}/${fname}_${now}"
 else
-    # echo "$file_path" "${parent}/${fname}_${now}.${extension}"
-    cp "$file_path" "${parent}/${fname}_${now}.${extension}"
+    out_path="${parent}/${fname}_${now}.${extension}"
+fi
+
+if [[ $use_move -eq 1 ]]; then
+    # echo "move $file_path  $out_path"
+    mv "$file_path" "$out_path"
+else
+    # echo "copy $file_path  $out_path"
+    cp "$file_path" "$out_path"
 fi
