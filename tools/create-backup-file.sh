@@ -9,7 +9,7 @@ for arg in "$@"; do
       use_move=1
       ;;
     *)
-        file_path=$1
+        file_path="$arg"
       ;;
   esac
 done
