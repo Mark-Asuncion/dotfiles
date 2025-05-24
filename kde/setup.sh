@@ -2,7 +2,7 @@
 set -e
 
 cd "$(dirname "$0")"
-sudo apt install kwin-bismuth power-profiles-daemon
+sudo apt install kwin-bismuth power-profiles-daemon qdirstat
 
 mkdir -p ~/.local/share/applications/
 desktop-file-install --dir ~/.local/share/applications/ --set-key=Exec \

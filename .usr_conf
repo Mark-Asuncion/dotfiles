@@ -2,6 +2,7 @@
 
 export PATH="/home/mark/.config/python3/bin:$PATH"
 
+alias tmux="TERM='xterm-256color' tmux"
 alias vi='nvim'
 alias vim='nvim'
 alias ls='exa --group-directories-first --icons -F'
