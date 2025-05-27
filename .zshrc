@@ -6,8 +6,8 @@ plugins=(
     zsh-syntax-highlighting
 )
 source $ZSH/oh-my-zsh.sh
-if [ -f "$HOME/.usr_conf" ] ; then
-    source "$HOME/.usr_conf"
+if [ -f "$HOME/.userconfig" ] ; then
+    source "$HOME/.userconfig"
 fi
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh

@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 
 function system_tools {
     echo 'copying dot config files'
-    cp .usr_conf "$HOME"/
+    cp .userconfig "$HOME"/
     cp .gitconfig "$HOME"/
 
     echo 'installing shell and terminal'
@@ -72,13 +72,13 @@ function install_utils {
     curl -O https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz && \
         tar -xf node-*.tar.xz && \
         sudo mv node-*/ /opt/ && \
-        echo "export PATH=\"/opt/node-v22.15.0-linux-x64/bin:\$PATH\"" >> "$HOME"/.usr_conf
+        echo "export PATH=\"/opt/node-v22.15.0-linux-x64/bin:\$PATH\"" >> "$HOME"/.userconfig
 
     echo 'installing neovim'
     wget https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz && \
         tar -xf nvim-*.tar.gz && \
         sudo mv nvim-*/ /opt/ && \
-        echo "export PATH=\"/opt/nvim-linux-x86_64/bin:\$PATH\"" >> "$HOME"/.usr_conf
+        echo "export PATH=\"/opt/nvim-linux-x86_64/bin:\$PATH\"" >> "$HOME"/.userconfig
 
     echo 'setting up nvim config'
     mkdir "$HOME"/.config/nvim/
