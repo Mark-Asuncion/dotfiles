@@ -106,6 +106,18 @@
         {
             "before": ["<leader>", "a", "y"],
             "after": [":", "%", "y", "+", "<CR>"]
+        },
+        {
+            "before": ["<leader>", "%"],
+            "commands": ["editor.emmet.action.matchTag"]
+        },
+        {
+            "before": ["s", "d"],
+            "after": ["<plugds>"]
+        },
+        {
+            "before": ["s", "r"],
+            "after": ["<plugcs>"]
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -140,6 +152,14 @@
         {
             "before": ["<"],
             "commands": ["editor.action.outdentLines"]
+        },
+        {
+            "before": ["<leader>", "%"],
+            "commands": ["editor.emmet.action.balanceOut"]
+        },
+        {
+            "before": ["s", "a"],
+            "after": ["S"]
         }
     ],
     "editor.wordWrap": "off",
