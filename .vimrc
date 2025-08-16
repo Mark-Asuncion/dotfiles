@@ -24,9 +24,10 @@ nnoremap Y y$
 " nnoremap L :vsc Window.NextTab<CR>
 " nnoremap H :vsc Window.PreviousTab<CR>
 " " nnoremap gd :vsc Edit.GoToDefinition<CR>
-" nnoremap <leader>w :vsc Window.Close<CR>
+" nnoremap <leader>w :vsc Window.CloseDocumentWindow<CR>
 " nnoremap <leader>W :vsc Window.CloseAllDocuments<CR>
 " nnoremap <leader>ff :vsc Edit.GoToFile<CR>
 " noremap <leader>/ :vsc Edit.Find<CR>
 " nnoremap ]e :vsc Edit.GoToNextIssueinFile<CR>
 " nnoremap [e :vsc Edit.GoToPreviousIssueinFile<CR>
+" nnoremap <leader>e :vsc View.SolutionExplorer<CR>
