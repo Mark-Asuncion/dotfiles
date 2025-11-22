@@ -16,7 +16,7 @@ done
 
 function usage {
     echo "USAGE:"
-    echo "./create-backup-file.sh [-m] <file_path>"
+    echo "./bkp.sh [-m] <file_path>"
 }
 
 if [[ -z "$file_path" ]]; then
@@ -24,7 +24,7 @@ if [[ -z "$file_path" ]]; then
     exit 0
 fi
 
-now=$(date +"%Y_%m_%d_%H%M")
+now=$(date +"%Y-%m-%dT%H%M")
 parent=$(dirname "$file_path")
 extension=""
 fname=$(basename "$file_path")
