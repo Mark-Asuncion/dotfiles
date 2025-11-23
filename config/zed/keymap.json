@@ -1,0 +1,84 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "vim_mode == insert || vim_mode == visual",
+    "bindings": {
+      "alt-a": "vim::SwitchToNormalMode"
+    }
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "j": [
+        "vim::Down",
+        {
+          "display_lines": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "k": [
+        "vim::Up",
+        {
+          "display_lines": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "vim_mode ==  normal || Workspace",
+    "bindings": {
+      "space f f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "vim_mode == normal || Workspace",
+    "bindings": {
+      "shift-h": [
+        "tab_switcher::Toggle",
+        {
+          "select_last": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "Workspace || vim_mode == normal",
+    "bindings": {
+      "shift-l": "tab_switcher::Toggle"
+    }
+  },
+  {
+    "context": "(ProjectPanel && not_editing)",
+    "bindings": {
+      "a": "project_panel::NewFile"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space a": "editor::SelectAll"
+    }
+  },
+  {
+    "context": "Pane || vim_mode == normal",
+    "bindings": {
+      "space w": "pane::CloseActiveItem"
+    }
+  }
+]
