@@ -4,7 +4,7 @@
 [alias]
     logd = log --graph --decorate --oneline
 [init]
-    defaultBranch = main
+    defaultBranch = master
 [core]
     editor = nvim
 [merge]
