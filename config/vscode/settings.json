@@ -163,5 +163,5 @@
         }
     ],
     "editor.wordWrap": "off",
-    "editor.acceptSuggestionOnCommitCharacter": false
+    "window.density.editorTabHeight": "compact"
 }
