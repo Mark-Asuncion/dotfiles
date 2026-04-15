@@ -23,8 +23,8 @@ function system_tools {
     sudo apt install -y wget curl \
         xclip fd-find \
         ripgrep bat \
-        btop exa \
-        fzf tar neofetch \
+        btop \
+        fzf tar \
         vlc qbittorrent
     echo 'installing antivirus'
     sudo apt install -y clamav
@@ -75,7 +75,7 @@ function install_utils {
         echo "export PATH=\"/opt/node-v22.15.0-linux-x64/bin:\$PATH\"" >> ~/.userconfig
 
     echo 'installing neovim'
-    wget https://github.com/neovim/neovim/releases/download/v0.11.1/nvim-linux-x86_64.tar.gz && \
+    wget https://github.com/neovim/neovim/releases/download/v0.12.1/nvim-linux-x86_64.tar.gz && \
         tar -xf nvim-*.tar.gz && \
         sudo mv nvim-*/ /opt/ && \
         echo "export PATH=\"/opt/nvim-linux-x86_64/bin:\$PATH\"" >> ~/.userconfig
