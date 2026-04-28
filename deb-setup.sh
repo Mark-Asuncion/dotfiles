@@ -10,10 +10,13 @@ function system_tools {
     cp .gitconfig ~/
 
     echo 'installing shell and terminal'
-    sudo apt install -y zsh alacritty
+    sudo apt install -y zsh alacritty tmux
     mkdir -p ~/.config/alacritty/
+    if [[ -f ~/.config/alacritty/alacritty.yml ]]; then
+        rm ~/.config/alacritty/alacritty.yml
+    fi
     ln -sr ./config/alacritty/alacritty.yml ~/.config/alacritty/
-    ./extra/zsh.sh
+    echo "Run $(pwd)/extra/zsh.sh to configure zsh"
 
     echo 'installing firewall'
     sudo apt install -y ufw gufw
@@ -62,46 +65,63 @@ function install_utils {
 
     echo 'setting up python3'
     sudo apt install -y python3-venv python3-pip
+    if [[ -d ~/.config/python3 ]]; then
+        rm -rf ~/.config/python3
+    fi
     mkdir -p ~/.config/python3
     python3 -m venv ~/.config/python3/
 
     echo 'setting up clangd config'
+    if [[ -d ~/.config/clangd/ ]]; then
+        rm -rf ~/.config/clangd/
+    fi
     ln -s -r "$dotfiled"/config/clangd/ ~/.config/
 
-    echo 'installing nodejs'
-    curl -O https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz && \
-        tar -xf node-*.tar.xz && \
-        sudo mv node-*/ /opt/ && \
-        echo "export PATH=\"/opt/node-v22.15.0-linux-x64/bin:\$PATH\"" >> ~/.userconfig
-
-    echo 'installing neovim'
-    wget https://github.com/neovim/neovim/releases/download/v0.12.1/nvim-linux-x86_64.tar.gz && \
-        tar -xf nvim-*.tar.gz && \
-        sudo mv nvim-*/ /opt/ && \
-        echo "export PATH=\"/opt/nvim-linux-x86_64/bin:\$PATH\"" >> ~/.userconfig
-
-    echo 'setting up nvim config'
-    mkdir ~/.config/nvim/
-    git clone https://github.com/Mark-Asuncion/NVIM-Config.git ~/.config/nvim/
-
-    echo 'installing vscode'
-    curl -O "https://vscode.download.prss.microsoft.com/dbazure/download/stable/17baf841131aa23349f217ca7c570c76ee87b957/code_1.99.3-1744761595_amd64.deb" && \
-        sudo dpkg -i code*.deb
-    sudo apt-get install -f
-
-    while read -r line
-    do
-        code --install-extension $line
-    done < "$dotfiled"/config/vscode/extensions.txt
-
-    if [ -f ~/.config/Code/User/settings.json ]; then
-        mv ~/.config/Code/User/settings.json ~/.config/Code/User/settings.json.bak
+    shopt -s nullglob
+    matches=(/opt/node-*)
+    if [[ ${#matches} -le 0 ]]; then
+        echo 'installing nodejs'
+        curl -O https://nodejs.org/dist/v22.15.0/node-v22.15.0-linux-x64.tar.xz && \
+            tar -xf node-*.tar.xz && \
+            sudo mv node-*/ /opt/ && \
+            echo "export PATH=\"/opt/node-v22.15.0-linux-x64/bin:\$PATH\"" >> ~/.userconfig
     fi
-    cp "$dotfiled"/config/vscode/settings.json ~/.config/Code/User/
-    if [ -f ~/.config/Code/User/keybindings.json ]; then
-        mv ~/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json.bak
+
+    matches=()
+    matches=(/opt/nvim-*)
+    if [[ ${#matches} -le 0 ]]; then
+        echo 'installing neovim'
+        wget https://github.com/neovim/neovim/releases/download/v0.12.1/nvim-linux-x86_64.tar.gz && \
+            tar -xf nvim-*.tar.gz && \
+            sudo mv nvim-*/ /opt/ && \
+            echo "export PATH=\"/opt/nvim-linux-x86_64/bin:\$PATH\"" >> ~/.userconfig
+
+        echo 'setting up nvim config'
+        mkdir ~/.config/nvim/
+        git clone https://github.com/Mark-Asuncion/NVIM-Config.git ~/.config/nvim/
     fi
-    cp "$dotfiled"/config/vscode/keybindings.json ~/.config/Code/User/
+    matches=()
+
+    if [[ -z $(which code) ]]; then
+        echo 'installing vscode'
+        curl -O "https://vscode.download.prss.microsoft.com/dbazure/download/stable/17baf841131aa23349f217ca7c570c76ee87b957/code_1.99.3-1744761595_amd64.deb" && \
+            sudo dpkg -i code*.deb
+        sudo apt-get install -f
+
+        while read -r line
+        do
+            code --install-extension $line
+        done < "$dotfiled"/config/vscode/extensions.txt
+
+        if [ -f ~/.config/Code/User/settings.json ]; then
+            mv ~/.config/Code/User/settings.json ~/.config/Code/User/settings.json.bak
+        fi
+        cp "$dotfiled"/config/vscode/settings.json ~/.config/Code/User/
+        if [ -f ~/.config/Code/User/keybindings.json ]; then
+            mv ~/.config/Code/User/keybindings.json ~/.config/Code/User/keybindings.json.bak
+        fi
+        cp "$dotfiled"/config/vscode/keybindings.json ~/.config/Code/User/
+    fi
 }
 
 system_tools
