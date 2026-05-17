@@ -17,4 +17,16 @@ alias grep='rg'
 # alias dua='dua interactive'
 alias scan='clamscan --verbose --max-filesize=2000M --max-scansize=2000M --recursive --infected --log=$HOME/clamscan.log'
 alias tmuxsession='tmux new -s$(basename $(pwd))'
+function tomp4()
+{
+    if [[ -z $1 ]]; then
+        echo "Input is empty"
+        exit 1
+    fi
+    if [[ -z $2 ]]; then
+        echo "Output is empty"
+        exit 1
+    fi
+    ffmpeg  -i ${1} -c:v libx264 -pix_fmt yuv420p ${2}
+}
 export FZF_DEFAULT_OPTS='--extended --scheme=path --reverse --height=100% --tabstop=4'
