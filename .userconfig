@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="/home/mark/.config/python3/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
 
 alias tmux="TERM='xterm-256color' tmux"
 alias vi='nvim'
