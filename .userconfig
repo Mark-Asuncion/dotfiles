@@ -17,6 +17,7 @@ alias grep='rg'
 # alias dua='dua interactive'
 alias scan='clamscan --verbose --max-filesize=2000M --max-scansize=2000M --recursive --infected --log=$HOME/clamscan.log'
 alias tmuxsession='tmux new -s$(basename $(pwd))'
+alias vidcutfmt='echo "ffmpeg -i <input> -ss HH:MM:ss [[-t HH:MM:SS], [-to HH:MM:SS]] -c copy <output>"'
 function tomp4()
 {
     if [[ -z $1 ]]; then
